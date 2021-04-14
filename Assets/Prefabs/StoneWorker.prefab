@@ -5030,7 +5030,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 382055491
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
@@ -5065,8 +5065,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5191442329625139611}
   - component: {fileID: 3261328043409199989}
+  - component: {fileID: 5653876659662743968}
   m_Layer: 0
-  m_Name: pfStoneHarvesterVisual
+  m_Name: StoneWorker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5112,6 +5113,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5653876659662743968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5191442329625139610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2847e07a3e7f8ca4b822c387d4829446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6690787927086421715
 GameObject:
   m_ObjectHideFlags: 0
@@ -10061,7 +10074,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 382055491
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
