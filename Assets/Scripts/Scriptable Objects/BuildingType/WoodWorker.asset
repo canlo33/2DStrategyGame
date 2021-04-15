@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Wood Worker
   prefab: {fileID: 3565715747615973155, guid: a8ddac80caf74a6428bf2b24a8e001e0, type: 3}
+  resourceGeneratorData:
+    coolDown: 1
+    resourceType: {fileID: 11400000, guid: e851be47a12492242bb85d0cb2256e6b, type: 2}

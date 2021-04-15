@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Gold Worker
   prefab: {fileID: 2156701223262941851, guid: be38c585b36f6194a8bb08b68a0c4302, type: 3}
+  resourceGeneratorData:
+    coolDown: 1
+    resourceType: {fileID: 11400000, guid: c2d49bb4c80483843b688577916b8507, type: 2}

@@ -4968,6 +4968,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2847e07a3e7f8ca4b822c387d4829446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coolDown: 1
+  resourceType: {fileID: 11400000, guid: e851be47a12492242bb85d0cb2256e6b, type: 2}
 --- !u!1 &3654176723631551727
 GameObject:
   m_ObjectHideFlags: 0

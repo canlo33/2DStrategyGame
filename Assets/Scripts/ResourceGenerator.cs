@@ -8,9 +8,6 @@ public class ResourceGenerator : MonoBehaviour
     private float timer;
     [SerializeField] private ResourceType resourceType;
 
-    // Start is called before the first frame update
-
-    // Update is called once per frame
     void Update()
     {
         timer -= Time.deltaTime;
@@ -18,7 +15,12 @@ public class ResourceGenerator : MonoBehaviour
         {
             timer = coolDown;
             ResourceManager.Instance.AddResource(resourceType, 1);
-            Debug.Log(resourceType.name + " :")
         }
     }
+}
+[System.Serializable]
+public class ResourceGeneratorData
+{
+    public float coolDown;
+    public ResourceType resourceType;
 }
