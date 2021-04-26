@@ -17,3 +17,4 @@ MonoBehaviour:
   resourceGeneratorData:
     coolDown: 1
     resourceType: {fileID: 11400000, guid: c2d49bb4c80483843b688577916b8507, type: 2}
+  sprite: {fileID: 21300000, guid: 8ead931dd91bff8489e75de9c414f17f, type: 3}

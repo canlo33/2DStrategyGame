@@ -9,7 +9,7 @@ public class ResourceManager : MonoBehaviour
     private Dictionary<ResourceType, int> resourceAmounts;
     private ResourceTypeList resourceTypeList;
     public event EventHandler OnResourceAmountChanged;
-    // Start is called before the first frame update
+
     void Awake()
     {
         Instance = this;
@@ -20,8 +20,7 @@ public class ResourceManager : MonoBehaviour
         {
             resourceAmounts[resourceType] = 0;
             Debug.Log(resourceType.name + " :" + GetResourceAmount(resourceType));
-        }
-            
+        }            
     }
     // This function will add resources to the selected resourceType and will be accessed from other scripts.
     // Event is invoked everytime resouce amount is changed(first checks if the listener is not null) and send message

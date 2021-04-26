@@ -39,7 +39,6 @@ public class ResourcesUI : MonoBehaviour
     {
         UpdateResourceAmount();
     }
-
     private void UpdateResourceAmount()
     {
         foreach (var resourceType in resourceTypeList.list)

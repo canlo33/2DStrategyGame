@@ -8,4 +8,5 @@ public class BuildingType : ScriptableObject
     public new string name = "Enter Building Name";
     public Transform prefab;
     public ResourceGeneratorData resourceGeneratorData;
+    public Sprite sprite;
 }
