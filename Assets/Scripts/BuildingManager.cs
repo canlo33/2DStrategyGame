@@ -34,7 +34,7 @@ public class BuildingManager : MonoBehaviour
     {        
         if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
-            if(activeBuildingType != null)
+            if(activeBuildingType != null && CanBuildInHere(activeBuildingType, UtilsClass.GetMousePositionOnWorld()))
                 Instantiate(activeBuildingType.prefab, UtilsClass.GetMousePositionOnWorld(), Quaternion.identity);
         }
     }
@@ -47,5 +47,24 @@ public class BuildingManager : MonoBehaviour
     public BuildingType ReturnActiveBuildingType()
     {
         return activeBuildingType;
+    }
+    private bool CanBuildInHere(BuildingType buildingType, Vector3 position)
+    {
+        // First We check what objects are around the place we want to build.
+        //If the area is not clear we return false.
+        BoxCollider2D boxCollider2D = buildingType.prefab.GetComponent<BoxCollider2D>();
+        Collider2D[] collider2DArray = Physics2D.OverlapBoxAll(position + (Vector3)boxCollider2D.offset, boxCollider2D.size, 0);
+        bool isAreaClear = collider2DArray.Length == 0;
+        if(!isAreaClear) return false;
+        //Secondly, If the area is clear. We need to check if there is another building with the same type around.
+        //As we dont want player to spam the same building type all over the same resource node.
+        collider2DArray = Physics2D.OverlapCircleAll(position, buildingType.minConstructionDistance);
+        foreach (var collider in collider2DArray)
+        {
+            ResourceGenerator resourceGenerator = collider.GetComponent<ResourceGenerator>();
+            if (resourceGenerator != null && resourceGenerator.BuildingType)
+                return false;
+        }
+        return true;
     }
 }

@@ -4,17 +4,48 @@ using UnityEngine;
 
 public class ResourceGenerator : MonoBehaviour
 {
-    [SerializeField]private float coolDown;
+    private ResourceGeneratorData resourceGeneratorData;
+    private float coolDown;
     private float timer;
-    [SerializeField] private ResourceType resourceType;
+    [SerializeField] private BuildingType buildingType;
+    public BuildingType BuildingType { get; private set; }
 
+    private void Awake()
+    {
+        resourceGeneratorData = buildingType.resourceGeneratorData;
+        BuildingType = buildingType;
+    }
+    private void Start()
+    {
+        Collider2D[] collider2DArray = Physics2D.OverlapCircleAll(transform.position, resourceGeneratorData.resourceDetectionRadius);
+        int nearbyResourceAmount = 0;
+        //We get the amount of related resources around the position of the ResourceGenerator a
+        foreach (var collider2D in collider2DArray)
+        {
+            ResourceNode resourceNode = collider2D.GetComponent<ResourceNode>();
+            //Check if the resource is not empty and it is the resource we are looking for, then increase amount.
+            if(resourceNode != null && resourceNode.resourceType == resourceGeneratorData.resourceType)
+                nearbyResourceAmount++;
+        }
+        //We clamp the nearbyResourceAmount between 0 and maxResourceAmount.
+        nearbyResourceAmount = Mathf.Clamp(nearbyResourceAmount, 0, resourceGeneratorData.maxResourceAmount);
+        //If there are no resources around we dont need to generate.
+        if (nearbyResourceAmount == 0)
+            enabled = false;
+        // Else if we have resource, we lower our cooldown for each nearbyResource we have.
+        else
+        {
+            coolDown = (resourceGeneratorData.coolDown / 2f) + resourceGeneratorData.coolDown * 
+                (1 - (float)nearbyResourceAmount / resourceGeneratorData.maxResourceAmount);
+        }
+    }
     void Update()
     {
         timer -= Time.deltaTime;
         if(timer <= 0f)
         {
             timer = coolDown;
-            ResourceManager.Instance.AddResource(resourceType, 1);
+            ResourceManager.Instance.AddResource(resourceGeneratorData.resourceType, 1);
         }
     }
 }
@@ -23,4 +54,6 @@ public class ResourceGeneratorData
 {
     public float coolDown;
     public ResourceType resourceType;
+    public float resourceDetectionRadius;
+    public int maxResourceAmount;
 }

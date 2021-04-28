@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b4aba3e6cb545a48893c560b10c1cce, type: 3}
-  m_Name: StoneWorker
+  m_Name: MainBuilding
   m_EditorClassIdentifier: 
-  name: Stone Worker
-  prefab: {fileID: 5191442329625139611, guid: 5b8b424b62a151c4f9620c86dacc2b1f, type: 3}
+  name: Main Building
+  prefab: {fileID: 609909751227243689, guid: c02dba420892767418590cdcad8e7341, type: 3}
   resourceGeneratorData:
     coolDown: 1
-    resourceType: {fileID: 11400000, guid: 02a0d0a26c754184ca3838116a6b8b92, type: 2}
-    resourceDetectionRadius: 5
-    maxResourceAmount: 4
-  sprite: {fileID: 21300000, guid: 2263e91ebcd2a254dab5f4caccb4a7af, type: 3}
+    resourceType: {fileID: 11400000, guid: e851be47a12492242bb85d0cb2256e6b, type: 2}
+    resourceDetectionRadius: 0
+    maxResourceAmount: 0
+  sprite: {fileID: 21300000, guid: 7030b8e3eb49e8440ae8eb3ec8b45d05, type: 3}
   minConstructionDistance: 7

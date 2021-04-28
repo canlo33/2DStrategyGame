@@ -8,6 +8,7 @@ public class BuildingButtonUI : MonoBehaviour
     private Dictionary<BuildingType, Transform> buttonTransformDictionary;
     [SerializeField] private Transform buttonTemplate;
     [SerializeField] private Sprite mouseSprite;
+    [SerializeField] private List<BuildingType> ignoredBuildingTypeList;
 
     private void Awake()
     {
@@ -17,11 +18,15 @@ public class BuildingButtonUI : MonoBehaviour
         int index = 0;
         foreach (var buildingType in buildingTypeList.list)
         {
+            // Check if the building type needs to be ignored or not.
+            if (ignoredBuildingTypeList.Contains(buildingType)) continue;
+            //Create the button and place it next to the previous button.
             Transform buttonTransform = Instantiate(buttonTemplate, transform);
             buttonTransform.gameObject.SetActive(true);
             float positionOffset = 160f;
             buttonTransform.Find("Image").GetComponent<Image>().sprite = buildingType.sprite;
             buttonTransform.GetComponent<RectTransform>().anchoredPosition = new Vector2(index * positionOffset, 0f);
+            // Add a listener to the button so when it is clicked it will change the active building type.
             buttonTransform.GetComponent<Button>().onClick.AddListener(() =>
             {
                 BuildingManager.Instance.ChangeActiveBuildingType(buildingType);
