@@ -6,10 +6,12 @@ using UnityEngine;
 public class BuildingIndicator : MonoBehaviour
 {
     [SerializeField] private GameObject spriteGameObject;
+    private ResourceNearbyOverlay resourceNearbyOverlay;
 
     private void Awake()
     {
         Hide();
+        resourceNearbyOverlay = transform.Find("ResourceNearbyOverlay").GetComponent<ResourceNearbyOverlay>();
     }
     private void Start()
     {
@@ -18,9 +20,14 @@ public class BuildingIndicator : MonoBehaviour
     private void BuildingManager_OnActiveBuildingTypeChanged(object sender, BuildingManager.OnActiveBuildingTypeChangedEventArgs eventArgs)
     {
         if (eventArgs.activeBuildingType == null)
+        {
             Hide();
+            resourceNearbyOverlay.Hide();
+        }            
         else
+        {
             Display(eventArgs.activeBuildingType.sprite);
+            resourceNearbyOverlay.Display(eventArgs.activeBuildingType.resourceGeneratorData);        }            
     }
     private void Update()
     {

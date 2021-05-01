@@ -10,4 +10,11 @@ public class BuildingType : ScriptableObject
     public ResourceGeneratorData resourceGeneratorData;
     public Sprite sprite;
     public float minConstructionDistance = 7f;
+    public BuildingCost[] constructionCostArray;
+}
+[System.Serializable]
+public class BuildingCost
+{
+    public ResourceType resourceType;
+    public int costAmount;
 }

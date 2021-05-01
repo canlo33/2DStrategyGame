@@ -17,7 +17,7 @@ MonoBehaviour:
   resourceGeneratorData:
     coolDown: 1
     resourceType: {fileID: 11400000, guid: e851be47a12492242bb85d0cb2256e6b, type: 2}
-    resourceDetectionRadius: 0
-    maxResourceAmount: 0
+    resourceDetectionRadius: 7
+    maxResourceAmount: 7
   sprite: {fileID: 21300000, guid: 7030b8e3eb49e8440ae8eb3ec8b45d05, type: 3}
-  minConstructionDistance: 7
+  minConstructionDistance: 10

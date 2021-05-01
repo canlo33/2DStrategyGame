@@ -30,12 +30,18 @@ public class BuildingManager : MonoBehaviour
         PlaceBuilding();
     }
     //This funtion will place a building if the mouse button is clicked and there is no other gameobject on the mouse position.
+    // We also check if the costruction rules are fine before building.
     private void PlaceBuilding()
     {        
         if(Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             if(activeBuildingType != null && CanBuildInHere(activeBuildingType, UtilsClass.GetMousePositionOnWorld()))
-                Instantiate(activeBuildingType.prefab, UtilsClass.GetMousePositionOnWorld(), Quaternion.identity);
+                if(ResourceManager.Instance.CanAffordBuilding(activeBuildingType.constructionCostArray))
+                    {
+                    ResourceManager.Instance.PayBuildingCost(activeBuildingType.constructionCostArray);
+                    Instantiate(activeBuildingType.prefab, UtilsClass.GetMousePositionOnWorld(), Quaternion.identity);
+                    }
+                
         }
     }
     // This function will use EventSystems that was created on BuildingManager script and changes the current ActiveBuildingType to the newone.
