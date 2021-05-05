@@ -18,6 +18,6 @@ public class ResourceGeneratorOverlay : MonoBehaviour
     }
     private void Update()
     {
-        bar.localScale = new Vector3(1- resourceGenerator.GetTimerNormalized(), 1, 1);
+        //bar.localScale = new Vector3(1- resourceGenerator.GetTimerNormalized(), 1, 1);
     }
 }

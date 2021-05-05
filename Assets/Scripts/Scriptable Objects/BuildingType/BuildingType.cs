@@ -11,6 +11,17 @@ public class BuildingType : ScriptableObject
     public Sprite sprite;
     public float minConstructionDistance = 7f;
     public BuildingCost[] constructionCostArray;
+    public int maxHealth;
+
+    public string GetBuildingInformationString()
+    {
+        string str = "";
+        foreach (BuildingCost constuctionCost in constructionCostArray)
+            str += "<color=#" + constuctionCost.resourceType.colorHex + ">" +
+                constuctionCost.resourceType.symbol + ": " + constuctionCost.costAmount +
+                "</color> ";
+        return str;
+    }
 }
 [System.Serializable]
 public class BuildingCost

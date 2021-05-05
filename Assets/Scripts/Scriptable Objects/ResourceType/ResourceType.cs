@@ -6,5 +6,7 @@ using UnityEngine;
 public class ResourceType : ScriptableObject
 {
     public new string name;
+    public string symbol;
     public Sprite sprite;
+    public string colorHex;
 }
