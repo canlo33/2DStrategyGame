@@ -72,6 +72,7 @@ public class ResourceGenerator : MonoBehaviour
 [System.Serializable]
 public class ResourceGeneratorData
 {
+    public bool hasGeneratorData;
     public float coolDown;
     public ResourceType resourceType;
     public float resourceDetectionRadius;

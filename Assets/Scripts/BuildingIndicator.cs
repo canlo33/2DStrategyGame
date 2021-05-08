@@ -27,7 +27,11 @@ public class BuildingIndicator : MonoBehaviour
         else
         {
             Display(eventArgs.activeBuildingType.sprite);
-            resourceNearbyOverlay.Display(eventArgs.activeBuildingType.resourceGeneratorData);        }            
+            if (eventArgs.activeBuildingType.resourceGeneratorData.hasGeneratorData)
+                resourceNearbyOverlay.Display(eventArgs.activeBuildingType.resourceGeneratorData);
+            else
+                resourceNearbyOverlay.Hide();
+        }            
     }
     private void Update()
     {

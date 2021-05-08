@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Stone Worker
   prefab: {fileID: 5191442329625139611, guid: 5b8b424b62a151c4f9620c86dacc2b1f, type: 3}
   resourceGeneratorData:
+    hasGeneratorData: 1
     coolDown: 1
     resourceType: {fileID: 11400000, guid: 02a0d0a26c754184ca3838116a6b8b92, type: 2}
     resourceDetectionRadius: 5

@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Main Building
   prefab: {fileID: 609909751227243689, guid: c02dba420892767418590cdcad8e7341, type: 3}
   resourceGeneratorData:
+    hasGeneratorData: 1
     coolDown: 1
     resourceType: {fileID: 11400000, guid: e851be47a12492242bb85d0cb2256e6b, type: 2}
     resourceDetectionRadius: 7

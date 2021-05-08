@@ -9,6 +9,7 @@ public class ResourceManager : MonoBehaviour
     private Dictionary<ResourceType, int> resourceAmounts;
     private ResourceTypeList resourceTypeList;
     public event EventHandler OnResourceAmountChanged;
+    [SerializeField] private List<ResourceAmount> startingResourceAmountList;
 
     void Awake()
     {
@@ -17,7 +18,9 @@ public class ResourceManager : MonoBehaviour
         resourceTypeList = Resources.Load<ResourceTypeList>(typeof(ResourceTypeList).Name);
         // Set all the resourcetypes and their amount to 0.
         foreach (var resourceType in resourceTypeList.list)
-            resourceAmounts[resourceType] = 0;          
+            resourceAmounts[resourceType] = 0;
+        foreach (var resourceAmount in startingResourceAmountList)
+            AddResource(resourceAmount.resourceType, resourceAmount.amount);
     }
 
     // This function will add resources to the selected resourceType and will be accessed from other scripts.

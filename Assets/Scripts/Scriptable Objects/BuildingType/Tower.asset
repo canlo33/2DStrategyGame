@@ -10,21 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b4aba3e6cb545a48893c560b10c1cce, type: 3}
-  m_Name: GoldWorker
+  m_Name: Tower
   m_EditorClassIdentifier: 
-  name: Gold Worker
-  prefab: {fileID: 2156701223262941851, guid: be38c585b36f6194a8bb08b68a0c4302, type: 3}
+  name: Tower
+  prefab: {fileID: 453496587237905750, guid: ca76aa84ea7a9a54985afc8a18cfb7ac, type: 3}
   resourceGeneratorData:
-    hasGeneratorData: 1
+    hasGeneratorData: 0
     coolDown: 1
-    resourceType: {fileID: 11400000, guid: c2d49bb4c80483843b688577916b8507, type: 2}
+    resourceType: {fileID: 0}
     resourceDetectionRadius: 7
-    maxResourceAmount: 3
-  sprite: {fileID: 21300000, guid: 8ead931dd91bff8489e75de9c414f17f, type: 3}
+    maxResourceAmount: 7
+  sprite: {fileID: 21300000, guid: 3a549cd61f4d79e4b996c9978dac641f, type: 3}
   minConstructionDistance: 7
   constructionCostArray:
-  - resourceType: {fileID: 11400000, guid: e851be47a12492242bb85d0cb2256e6b, type: 2}
-    costAmount: 50
   - resourceType: {fileID: 11400000, guid: 02a0d0a26c754184ca3838116a6b8b92, type: 2}
-    costAmount: 50
-  maxHealth: 100
+    costAmount: 30
+  maxHealth: 70

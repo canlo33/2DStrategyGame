@@ -7,6 +7,7 @@ using System;
 public class BuildingManager : MonoBehaviour
 {
     public static BuildingManager Instance { get; private set;}
+    [SerializeField] private Building mainBuilding;
     Camera mainCamera;
     private BuildingTypeList buildingTypeList;
     private BuildingType activeBuildingType;
@@ -27,12 +28,14 @@ public class BuildingManager : MonoBehaviour
     private void Update()
     {
         PlaceBuilding();
+        if (Input.GetKeyDown(KeyCode.T))
+            EnemyController.RespownEnemy(UtilsClass.GetMousePositionOnWorld());
     }
-    //This funtion will place a building if the mouse button is clicked and there is no other gameobject on the mouse position.
-    // We also check if the costruction rules are fine before building.
-    // If we dont meet the construction rules, it will call ToolTipUI to display why we cant place here.
     private void PlaceBuilding()
     {
+        //This funtion will place a building if the mouse button is clicked and there is no other gameobject on the mouse position.
+        // We also check if the costruction rules are fine before building.
+        // If we dont meet the construction rules, it will call ToolTipUI to display why we cant place here.
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
         {
             if (activeBuildingType != null)
@@ -51,9 +54,9 @@ public class BuildingManager : MonoBehaviour
             }
         }
     }
-    // This function will use EventSystems that was created on BuildingManager script and changes the current ActiveBuildingType to the newone.
     public void ChangeActiveBuildingType(BuildingType newBuildingType)
     {
+        // This function will use EventSystems that was created on BuildingManager script and changes the current ActiveBuildingType to the newone.
         activeBuildingType = newBuildingType;
         OnActiveBuildingTypeChanged?.Invoke(this, new OnActiveBuildingTypeChangedEventArgs { activeBuildingType = activeBuildingType });
     }
@@ -87,5 +90,9 @@ public class BuildingManager : MonoBehaviour
         }
         errorMessage = "";
         return true;
+    }
+    public Building GetMainBuilding()
+    {
+        return mainBuilding;
     }
 }
