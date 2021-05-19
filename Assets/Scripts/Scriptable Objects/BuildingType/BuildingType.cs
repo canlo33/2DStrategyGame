@@ -10,22 +10,17 @@ public class BuildingType : ScriptableObject
     public ResourceGeneratorData resourceGeneratorData;
     public Sprite sprite;
     public float minConstructionDistance = 7f;
-    public BuildingCost[] constructionCostArray;
+    public ResourceAmount[] constructionCostArray;
     public int maxHealth;
+    public float constuctionTime;
 
     public string GetBuildingInformationString()
     {
         string str = "";
-        foreach (BuildingCost constuctionCost in constructionCostArray)
-            str += "<color=#" + constuctionCost.resourceType.colorHex + ">" +
-                constuctionCost.resourceType.symbol + ": " + constuctionCost.costAmount +
+        foreach (ResourceAmount resourceAmount in constructionCostArray)
+            str += "<color=#" + resourceAmount.resourceType.colorHex + ">" +
+                resourceAmount.resourceType.symbol + ": " + resourceAmount.amount +
                 "</color> ";
         return str;
     }
-}
-[System.Serializable]
-public class BuildingCost
-{
-    public ResourceType resourceType;
-    public int costAmount;
 }

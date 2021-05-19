@@ -38,22 +38,22 @@ public class ResourceManager : MonoBehaviour
         return resourceAmounts[resourceType];
     }
     // This function will check if the player can afford the cost of certain type of building and will return the result in bool.
-    public bool CanAffordBuilding(BuildingCost[] buildingCostArray)
+    public bool CanAffordBuilding(ResourceAmount[] resourceAmountArray)
     {
-        foreach (var buildingCost in buildingCostArray)
+        foreach (var resourceAmount in resourceAmountArray)
         {
             //Cant afford
-            if (GetResourceAmount(buildingCost.resourceType) < buildingCost.costAmount)
+            if (GetResourceAmount(resourceAmount.resourceType) < resourceAmount.amount)
                 return false;
         }
         //We can afford 
         return true;
     }
     // This function will be called to pay the construction cost for each building.
-    public void PayBuildingCost(BuildingCost[] buildingCostArray)
+    public void PayBuildingCost(ResourceAmount[] resourceAmountArray)
     {
-        foreach (var buildingCost in buildingCostArray)
-            resourceAmounts[buildingCost.resourceType] -= buildingCost.costAmount;
+        foreach (ResourceAmount resourceAmount in resourceAmountArray)
+            resourceAmounts[resourceAmount.resourceType] -= resourceAmount.amount;
     }
 
 

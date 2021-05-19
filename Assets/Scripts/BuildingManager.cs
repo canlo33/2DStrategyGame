@@ -44,7 +44,8 @@ public class BuildingManager : MonoBehaviour
                     if (ResourceManager.Instance.CanAffordBuilding(activeBuildingType.constructionCostArray))
                     {
                         ResourceManager.Instance.PayBuildingCost(activeBuildingType.constructionCostArray);
-                        Instantiate(activeBuildingType.prefab, UtilsClass.GetMousePositionOnWorld(), Quaternion.identity);
+                        //Instantiate(activeBuildingType.prefab, UtilsClass.GetMousePositionOnWorld(), Quaternion.identity);
+                        BuildingConstruction.Create(UtilsClass.GetMousePositionOnWorld(), activeBuildingType);
                     }
                     else
                         TooltipUI.Instance.Display("Insufficent resource " + activeBuildingType.GetBuildingInformationString(),
@@ -81,8 +82,8 @@ public class BuildingManager : MonoBehaviour
         collider2DArray = Physics2D.OverlapCircleAll(position, buildingType.minConstructionDistance);
         foreach (var collider in collider2DArray)
         {
-            ResourceGenerator resourceGenerator = collider.GetComponent<ResourceGenerator>();
-            if (resourceGenerator != null && resourceGenerator.BuildingType)
+            BuildingTypeHolder buildingTypeHolder = collider.GetComponent<BuildingTypeHolder>();
+            if (buildingTypeHolder != null && buildingTypeHolder.buildingType == buildingType)
             {
                 errorMessage = "Too close to another same type building!";
                 return false;

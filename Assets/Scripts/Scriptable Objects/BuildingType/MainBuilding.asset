@@ -24,3 +24,4 @@ MonoBehaviour:
   minConstructionDistance: 10
   constructionCostArray: []
   maxHealth: 150
+  constuctionTime: 5

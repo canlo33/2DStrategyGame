@@ -6,10 +6,18 @@ using System;
 public class Building : MonoBehaviour
 {
     private HealthSystem healthSystem;
-    [SerializeField]private BuildingType buildingType;
+    private BuildingType buildingType;
+    [SerializeField] private Transform demolishButton;
+    private void Awake()
+    {
+        demolishButton = transform.Find("BuildingDemolishButton");
+        if(demolishButton != null)
+            demolishButton.gameObject.SetActive(false);
+    }
     private void Start()
     {
         healthSystem = GetComponent<HealthSystem>();
+        buildingType = GetComponent<BuildingTypeHolder>().buildingType;
         healthSystem.Initialize(buildingType.maxHealth, true);
         healthSystem.OnDied += HealthSystem_OnDied;
     }
@@ -17,5 +25,15 @@ public class Building : MonoBehaviour
     {
         //This function will be called when the currentHealth drops to zero and will destroy the game object.
         Destroy(gameObject);
+    }
+    private void OnMouseEnter()
+    {
+        if (demolishButton != null)
+            demolishButton.gameObject.SetActive(true);
+    }
+    private void OnMouseExit()
+    {
+        if (demolishButton != null)
+            demolishButton.gameObject.SetActive(false);
     }
 }

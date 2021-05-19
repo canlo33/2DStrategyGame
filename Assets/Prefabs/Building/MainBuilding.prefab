@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6661132810821477635}
   - component: {fileID: -3128605425321281240}
   - component: {fileID: 7960635682359919267}
+  - component: {fileID: 1299765227501060174}
   m_Layer: 0
   m_Name: MainBuilding
   m_TagString: Untagged
@@ -159,6 +160,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootCooldown: 0.2
   arrowSpawnPoint: {fileID: 2665541669161760979}
+--- !u!114 &1299765227501060174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609909751227243688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ebac15b56a56a4d8ddc8a3c025e8d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildingType: {fileID: 11400000, guid: 186f0a82d8e63a34a9df86f6e864a1b9, type: 2}
 --- !u!1 &718700156929876108
 GameObject:
   m_ObjectHideFlags: 0
