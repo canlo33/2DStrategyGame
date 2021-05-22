@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
+    public static WaveManager Instance { get; private set; }
     private enum State
     {
         WaitingForNextWave,
@@ -20,6 +21,10 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private List<Transform> spawnPointList;
     [SerializeField] private Transform wavePortal;
     private Vector3 spawnPosition;
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
 

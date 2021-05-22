@@ -25,7 +25,8 @@ public class EnemyController : MonoBehaviour
         healthSystem = GetComponent<HealthSystem>();
         healthSystem.OnDied += HealthSystem_OnDied;
         mainBuilding = BuildingManager.Instance.GetMainBuilding();
-        targetTransform = mainBuilding.transform;
+        if(mainBuilding != null)
+            targetTransform = mainBuilding.transform;
         checkTargetTimer = Random.Range(0f, checkTargetCooldown);
     }
 
@@ -69,7 +70,7 @@ public class EnemyController : MonoBehaviour
                         Vector3.Distance(transform.position, targetTransform.position))
                         targetTransform = building.transform;
         }
-        if (targetTransform == null)
+        if (targetTransform == null && mainBuilding != null)
             targetTransform = mainBuilding.transform;
     }
     private void HandleTargeting()

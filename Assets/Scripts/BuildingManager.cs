@@ -24,12 +24,17 @@ public class BuildingManager : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
+        mainBuilding.GetComponent<HealthSystem>().OnDied += MainBuilding_OnDied;
     }
+
+    private void MainBuilding_OnDied(object sender, EventArgs e)
+    {
+        GameOverUI.Instance.Display();
+    }
+
     private void Update()
     {
         PlaceBuilding();
-        if (Input.GetKeyDown(KeyCode.T))
-            EnemyController.RespownEnemy(UtilsClass.GetMousePositionOnWorld());
     }
     private void PlaceBuilding()
     {

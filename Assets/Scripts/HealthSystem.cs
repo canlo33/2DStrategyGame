@@ -6,6 +6,7 @@ using System;
 public class HealthSystem : MonoBehaviour
 {
     public event EventHandler OnDamaged;
+    public event EventHandler OnHealed;
     public event EventHandler OnDied;
     [SerializeField]private int maxHealth;
     private int currentHealth;    
@@ -22,6 +23,17 @@ public class HealthSystem : MonoBehaviour
 
         if(IsDead())
             OnDied?.Invoke(this, EventArgs.Empty);
+    }
+    public void Heal(int amount)
+    {
+        currentHealth += amount;
+        if (currentHealth < 0) currentHealth = 0;
+        OnHealed?.Invoke(this, EventArgs.Empty);
+    }
+    public void HealFull()
+    {
+        currentHealth = maxHealth;
+        OnHealed?.Invoke(this, EventArgs.Empty);
     }
     public void Initialize(int maxHealth, bool updateCurrentHealth)
     {
@@ -40,6 +52,10 @@ public class HealthSystem : MonoBehaviour
     public int GetCurrentHealth()
     {
         return currentHealth;
+    }
+    public int GetMaxHealth()
+    {
+        return maxHealth;
     }
     public float GetCurrentHealthNormalized()
     {
