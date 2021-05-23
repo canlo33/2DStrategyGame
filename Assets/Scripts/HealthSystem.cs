@@ -5,6 +5,7 @@ using System;
 
 public class HealthSystem : MonoBehaviour
 {
+    public event EventHandler OnHealthChanged;
     public event EventHandler OnDamaged;
     public event EventHandler OnHealed;
     public event EventHandler OnDied;
@@ -40,6 +41,7 @@ public class HealthSystem : MonoBehaviour
         this.maxHealth = maxHealth;
         if (updateCurrentHealth)
             currentHealth = maxHealth;
+        OnHealthChanged?.Invoke(this, EventArgs.Empty);
     }
     public bool IsHealthFull()
     {

@@ -21,10 +21,20 @@ public class CameraController : MonoBehaviour
         Zoom();
     }
     //This function allows us the move the camera horizontally and vertically using the arrow keys.
+    //Player can also move the camera by moving the mouse near the screen edge.
     void Move()
     {
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
+        float edgeScrollingSize = 30f;
+        if (Input.mousePosition.x > Screen.width - edgeScrollingSize)
+            x = 1f;
+        if (Input.mousePosition.x < edgeScrollingSize)
+            x = -1f;
+        if (Input.mousePosition.y > Screen.height - edgeScrollingSize)
+            y = 1f;
+        if (Input.mousePosition.y < edgeScrollingSize)
+            y = -1f;
         Vector3 moveDirection = new Vector3(x, y).normalized;
         transform.position += moveDirection * movementSpeed * Time.deltaTime;
     }
