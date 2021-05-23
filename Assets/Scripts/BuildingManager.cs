@@ -29,6 +29,7 @@ public class BuildingManager : MonoBehaviour
 
     private void MainBuilding_OnDied(object sender, EventArgs e)
     {
+        SoundManager.Instance.PlayAudio(6);
         GameOverUI.Instance.Display();
     }
 
@@ -49,8 +50,8 @@ public class BuildingManager : MonoBehaviour
                     if (ResourceManager.Instance.CanAffordBuilding(activeBuildingType.constructionCostArray))
                     {
                         ResourceManager.Instance.PayBuildingCost(activeBuildingType.constructionCostArray);
-                        //Instantiate(activeBuildingType.prefab, UtilsClass.GetMousePositionOnWorld(), Quaternion.identity);
                         BuildingConstruction.Create(UtilsClass.GetMousePositionOnWorld(), activeBuildingType);
+                        SoundManager.Instance.PlayAudio(2);
                     }
                     else
                         TooltipUI.Instance.Display("Insufficent resource " + activeBuildingType.GetBuildingInformationString(),

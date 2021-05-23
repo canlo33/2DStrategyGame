@@ -24,14 +24,21 @@ public class EnemyController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         healthSystem = GetComponent<HealthSystem>();
         healthSystem.OnDied += HealthSystem_OnDied;
+        healthSystem.OnDamaged += HealthSystem_OnDamaged;
         mainBuilding = BuildingManager.Instance.GetMainBuilding();
         if(mainBuilding != null)
             targetTransform = mainBuilding.transform;
         checkTargetTimer = Random.Range(0f, checkTargetCooldown);
     }
 
+    private void HealthSystem_OnDamaged(object sender, System.EventArgs e)
+    {
+        SoundManager.Instance.PlayAudio(4);
+    }
+
     private void HealthSystem_OnDied(object sender, System.EventArgs e)
     {
+        SoundManager.Instance.PlayAudio(3);
         Destroy(gameObject);
     }
 

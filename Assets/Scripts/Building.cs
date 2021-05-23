@@ -29,6 +29,7 @@ public class Building : MonoBehaviour
 
     private void HealthSystem_OnDamaged(object sender, EventArgs e)
     {
+        SoundManager.Instance.PlayAudio(0);
         repairButton.gameObject.SetActive(true);
     }
 
@@ -41,6 +42,7 @@ public class Building : MonoBehaviour
     private void HealthSystem_OnDied(object sender, EventArgs eventArgs)
     {
         //This function will be called when the currentHealth drops to zero and will destroy the game object.
+        SoundManager.Instance.PlayAudio(1);
         Destroy(gameObject);
     }
     private void OnMouseEnter()
