@@ -153,6 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19b1cadf2adf8c945a4f9b1d8058313a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyDieParticles: {fileID: 4850068476918138423, guid: fa53ff3e077270e4d8a679c8fa7de07f,
+    type: 3}
 --- !u!114 &4752549483438800644
 MonoBehaviour:
   m_ObjectHideFlags: 0

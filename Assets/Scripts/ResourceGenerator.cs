@@ -64,6 +64,10 @@ public class ResourceGenerator : MonoBehaviour
     {
         return timer / coolDown;
     }
+    public float GetCoolDown()
+    {
+        return coolDown;
+    }
     public float GetResourceGeneratingRate()
     {
         return 1 / coolDown;

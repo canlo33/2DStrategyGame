@@ -31,7 +31,7 @@ public class WaveManager : MonoBehaviour
         currentState = State.WaitingForNextWave;
         spawnPosition = spawnPointList[UnityEngine.Random.Range(0, spawnPointList.Count)].position;
         wavePortal.position = spawnPosition;
-        nextWaveTimer = 3f;
+        nextWaveTimer = 30f;
     }
     private void Update()
     {
@@ -59,7 +59,7 @@ public class WaveManager : MonoBehaviour
                         currentState = State.WaitingForNextWave;
                         spawnPosition = spawnPointList[UnityEngine.Random.Range(0, spawnPointList.Count)].position;
                         wavePortal.position = spawnPosition;
-                        nextWaveTimer = 10f;
+                        nextWaveTimer = 30f;
                     }                        
                 }
                 break;

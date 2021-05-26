@@ -9,6 +9,7 @@ public class Building : MonoBehaviour
     private BuildingType buildingType;
     [SerializeField] private Transform demolishButton;
     [SerializeField] private Transform repairButton;
+    [SerializeField] private Transform buildingDestroyedParticles;
     private void Awake()
     {
         demolishButton = transform.Find("BuildingDemolishButton");
@@ -31,6 +32,7 @@ public class Building : MonoBehaviour
     {
         SoundManager.Instance.PlayAudio(0);
         repairButton.gameObject.SetActive(true);
+        CameraShake.Instance.ShakeCamera(7f, .2f);
     }
 
     private void HealthSystem_OnHealed(object sender, EventArgs e)
@@ -43,6 +45,8 @@ public class Building : MonoBehaviour
     {
         //This function will be called when the currentHealth drops to zero and will destroy the game object.
         SoundManager.Instance.PlayAudio(1);
+        Instantiate(buildingDestroyedParticles, transform.position, Quaternion.identity);
+        CameraShake.Instance.ShakeCamera(7f, .3f);
         Destroy(gameObject);
     }
     private void OnMouseEnter()

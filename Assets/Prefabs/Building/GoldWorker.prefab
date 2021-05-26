@@ -5038,6 +5038,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   demolishButton: {fileID: 0}
   repairButton: {fileID: 0}
+  buildingDestroyedParticles: {fileID: 222898084527167713, guid: 5731055b57af76744aa0f260d9e0e788,
+    type: 3}
 --- !u!114 &-6783343156357135330
 MonoBehaviour:
   m_ObjectHideFlags: 0

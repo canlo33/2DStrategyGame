@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     private HealthSystem healthSystem;
     private float checkTargetTimer;
     private float checkTargetCooldown = 0.2f;
+    [SerializeField] private Transform enemyDieParticles;
 
     //This static function will allow us to instantiate new enemies at given position.
     public static EnemyController RespownEnemy(Vector3 position)
@@ -39,6 +40,8 @@ public class EnemyController : MonoBehaviour
     private void HealthSystem_OnDied(object sender, System.EventArgs e)
     {
         SoundManager.Instance.PlayAudio(3);
+        Instantiate(enemyDieParticles, transform.position, Quaternion.identity);
+        CameraShake.Instance.ShakeCamera(7f, .2f);
         Destroy(gameObject);
     }
 
@@ -70,7 +73,7 @@ public class EnemyController : MonoBehaviour
         {
             Building building = collider2D.GetComponent<Building>();
             if (building != null)
-                if (targetTransform != null)
+                if (targetTransform == null)
                     targetTransform = building.transform;
                 else
                     if (Vector3.Distance(transform.position, building.transform.position) <
@@ -91,12 +94,13 @@ public class EnemyController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Check if we collided with a building, if so then damage the building.
+        //Check if we collided with a building, if so then damage the building, damage and kill itself as well.
         Building building = collision.gameObject.GetComponent<Building>();
         if(building != null)
         {
             HealthSystem healthSystem = building.GetComponent<HealthSystem>();
             healthSystem.Damage(10);
+            this.healthSystem.Damage(500);
             Destroy(gameObject);
         }
     }

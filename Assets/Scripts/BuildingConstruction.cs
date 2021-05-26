@@ -11,6 +11,7 @@ public class BuildingConstruction : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Building building;
     private Material constructionMaterial;
+    [SerializeField] private Transform buildingPlacedParticles;
 
     public static BuildingConstruction Create(Vector3 position, BuildingType buildingType)
     {
@@ -34,6 +35,7 @@ public class BuildingConstruction : MonoBehaviour
         if (constructionTimer <= 0)
         {
             Instantiate(buildingType.prefab, transform.position, Quaternion.identity);
+            Instantiate(buildingPlacedParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }         
     }

@@ -14,10 +14,16 @@ public class ResourceGeneratorOverlay : MonoBehaviour
     {
         resourceGeneratorData = resourceGenerator.GetResourceGeneratorData();
         icon.GetComponent<SpriteRenderer>().sprite = resourceGeneratorData.resourceType.sprite;
-        text.SetText(resourceGenerator.GetResourceGeneratingRate().ToString("F1"));
+        if (resourceGenerator.GetCoolDown() != 0)
+            text.SetText(resourceGenerator.GetResourceGeneratingRate().ToString("F1"));
+        else
+            text.SetText("0");
     }
     private void Update()
     {
-        //bar.localScale = new Vector3(1- resourceGenerator.GetTimerNormalized(), 1, 1);
+        if(resourceGenerator.GetCoolDown() != 0)
+            bar.localScale = new Vector3(1 - resourceGenerator.GetTimerNormalized(), 1, 1);
+        else
+            bar.localScale = new Vector3(1, 1, 1);
     }
 }
